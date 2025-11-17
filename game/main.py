@@ -29,11 +29,19 @@ def main():
         # RENDER
         screen.fill((30, 30, 30))
 
-        # draw lane (single lane for now)
-        lane_rect = pygame.Rect(
-            world.lane_x, 0, world.lane_width, SCREEN_HEIGHT
-        )
-        pygame.draw.rect(screen, (60, 60, 60), lane_rect)
+        render_info = world.get_render_info(SCREEN_HEIGHT)
+
+        # draw lanes
+        for lane_rect in render_info.lane_rects:
+            pygame.draw.rect(screen, (60, 60, 60), lane_rect)
+
+        # draw arena boundaries
+        pygame.draw.rect(screen, (100, 100, 100), render_info.top_boundary)
+        pygame.draw.rect(screen, (100, 100, 100), render_info.bottom_boundary)
+
+        # draw towers
+        for tower in world.towers:
+            tower.draw(screen)
 
         # draw troops
         for troop in world.troops:

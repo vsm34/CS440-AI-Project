@@ -1,11 +1,15 @@
 import pygame
 
+
 class Troop:
+    WIDTH = 40
+    HEIGHT = 40
+
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.width = 40
-        self.height = 40
+        self.width = self.WIDTH
+        self.height = self.HEIGHT
         self.speed = 120  # pixels per second (slow unit)
         self.color = (200, 200, 200)  # light gray (Drybones placeholder)
 

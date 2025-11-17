@@ -1,0 +1,10 @@
+[
+  {
+    "id": "drybones",
+    "name": "Drybones",
+    "hp": 100,
+    "speed": 120,
+    "damage": 20,
+    "range": 10
+  }
+]

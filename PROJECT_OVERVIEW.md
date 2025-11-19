@@ -29,38 +29,38 @@ smooth rendering & input handling
 
 📦 2. Project Directory Structure
 CS440-AI-Project/
-│
-├── game/
-│   ├── main.py                # Entry point for Pygame window & render loop
-│   │
-│   ├── core/
-│   │   ├── world.py           # World class (lanes, towers, troops, simulation)
-│   │   └── actions.py         # PlayCardAction dataclass
-│   │
-│   ├── entities/
-│   │   ├── troop.py           # Troop (Drybones placeholder)
-│   │   └── tower.py           # King tower entity
-│   │
-│   ├── ai/
-│   │   ├── state.py           # GameState + TroopSnapshot
-│   │   └── policy.py          # choose_ai_action (stub)
-│   │
-│   ├── data/
-│   │   ├── loader.py          # Loads JSON card/troop data
-│   │   ├── cards.json         # Card definitions (placeholder)
-│   │   └── troops.json        # Troop definitions (placeholder)
-│   │
-│   └── ui/
-│       └── (future UI modules)
-│
-├── assets/
-│   ├── sprites/
-│   └── sounds/
-│
-├── tests/
-│
-├── requirements.txt
-└── PROJECT_OVERVIEW.md
+- │
+- ├── game/
+- │   ├── main.py                # Entry point for Pygame window & render loop
+- │   │
+- │   ├── core/
+- │   │   ├── world.py           # World class (lanes, towers, troops, simulation)
+- │   │   └── actions.py         # PlayCardAction dataclass
+- │   │
+- │   ├── entities/
+- │   │   ├── troop.py           # Troop (Drybones placeholder)
+- │   │   └── tower.py           # King tower entity
+- │   │
+- │   ├── ai/
+- │   │   ├── state.py           # GameState + TroopSnapshot
+- │   │   └── policy.py          # choose_ai_action (stub)
+- │   │
+- │   ├── data/
+- │   │   ├── loader.py          # Loads JSON card/troop data
+- │   │   ├── cards.json         # Card definitions (placeholder)
+- │   │   └── troops.json        # Troop definitions (placeholder)
+- │   │
+- │   └── ui/
+- │       └── (future UI modules)
+- │
+- ├── assets/
+- │   ├── sprites/
+- │   └── sounds/
+- │
+- ├── tests/
+- │
+- ├── requirements.txt
+- └── PROJECT_OVERVIEW.md
 
 🎮 3. Implemented Features (So Far)
 ✔ Game Startup & Loop

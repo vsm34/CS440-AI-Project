@@ -117,31 +117,57 @@ class Tower:
 
         ratio = max(0.0, self.hp / self.max_hp)
         w, h = 60, 8
-        cx, top_y = self._rect.centerx, self._rect.top
+        cx = self._rect.centerx
+        
+        # Team-aware HP bar positioning:
+        # Enemy (top) tower: bar below the tower
+        # Player (bottom) tower: bar above the tower
+        if self.team == "ai":  # Enemy tower at top
+            bar_y = self._rect.bottom + 4
+        else:  # Player tower at bottom
+            bar_y = self._rect.top - h - 4
 
-        bg_rect = pygame.Rect(cx - w // 2 - 1, top_y - h - 12 - 1, w + 2, h + 2)
-        hp_back_rect = pygame.Rect(cx - w // 2, top_y - h - 12, w, h)
-        hp_rect = pygame.Rect(cx - w // 2, top_y - h - 12, int(w * ratio), h)
+        # Consistent health bar styling: 1px black border, red background, green fill
+        bg_rect = pygame.Rect(cx - w // 2 - 1, bar_y - 1, w + 2, h + 2)
+        hp_back_rect = pygame.Rect(cx - w // 2, bar_y, w, h)
+        hp_rect = pygame.Rect(cx - w // 2, bar_y, int(w * ratio), h)
 
         pygame.draw.rect(screen, BLACK, bg_rect)
         pygame.draw.rect(screen, RED_HP, hp_back_rect)
         pygame.draw.rect(screen, GREEN_HP, hp_rect)
 
     def draw(self, screen: pygame.Surface) -> None:
-        # Core body
+        # Core body with darker outline for better readability
         base_color = TEAM_PLAYER if self.team == "player" else TEAM_ENEMY
+        outline_color = (20, 60, 120) if self.team == "player" else (120, 20, 20)
+        
+        # Draw outline (slightly larger rect)
+        outline_rect = self._rect.inflate(2, 2)
+        pygame.draw.rect(screen, outline_color, outline_rect)
+        
+        # Draw main body
         pygame.draw.rect(screen, base_color, self._rect)
 
-        # Simple "crown" for king tower
+        # Simple "front face" for king tower - mirrored based on team position
         if self.is_king:
-            crown_h = self._size // 4
-            crown_rect = pygame.Rect(
-                self._rect.left + self._size // 4,
-                self._rect.top,
-                self._size // 2,
-                crown_h,
-            )
-            pygame.draw.rect(screen, GOLD, crown_rect)
+            # Front face dimensions (yellow window)
+            front_w = int(self._size * 0.6)
+            front_h = int(self._size * 0.25)
+            front_x = self._rect.left + int(self._size * 0.2)
+            
+            # For enemy (top) tower: front faces downward (toward center)
+            # For player (bottom) tower: front faces upward (toward center)
+            if self.team == "ai":  # Enemy tower at top
+                front_y = self._rect.top + int(self._size * 0.55)
+            else:  # Player tower at bottom
+                front_y = self._rect.top + int(self._size * 0.2)
+            
+            front_rect = pygame.Rect(front_x, front_y, front_w, front_h)
+            
+            # Front face outline (darker)
+            pygame.draw.rect(screen, (200, 150, 0), front_rect.inflate(1, 1))
+            # Front face fill (gold/yellow)
+            pygame.draw.rect(screen, GOLD, front_rect)
 
         # Attack beam (if we attacked this frame)
         if self._last_attack_line is not None:

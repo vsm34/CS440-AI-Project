@@ -21,29 +21,49 @@ def draw_arena_with_bridges(
     play_height: int,
 ) -> None:
     """
-    Recreate the arena background from smash2.py:
+    Recreate the arena background from smash2.py with enhanced visuals:
     - Dark border clear
-    - Green battlefield
-    - Blue river strip across the middle
-    - Two wooden bridges at the sides
+    - Green battlefield with subtle variation
+    - Blue river strip across the middle with darker outline
+    - Two wooden bridges at the sides with darker outline
     """
     screen.fill(BLACK)
 
-    # Battlefield ground
-    pygame.draw.rect(screen, (40, 100, 40), (0, 0, width, height))
+    # Battlefield ground with subtle color variation (checkerboard pattern)
+    grass_dark = (40, 100, 40)
+    grass_light = (45, 105, 45)
+    tile_size = 20
+    
+    for y in range(0, height, tile_size):
+        for x in range(0, width, tile_size):
+            color = grass_light if ((x // tile_size) + (y // tile_size)) % 2 == 0 else grass_dark
+            pygame.draw.rect(screen, color, (x, y, tile_size, tile_size))
 
     # River strip through the middle of the play area
     river_y = play_height // 2 - 20
-    pygame.draw.rect(screen, (30, 30, 150), (0, river_y, width, 40))
+    river_color = (30, 30, 150)
+    river_outline = (15, 15, 100)
+    
+    # River outline (darker border)
+    pygame.draw.rect(screen, river_outline, (0, river_y - 1, width, 42))
+    # River fill
+    pygame.draw.rect(screen, river_color, (0, river_y, width, 40))
 
     # Wooden bridges (left and right), matching smash2 approximate positions
     bridge_w, bridge_h = 40, 50
     left_bridge_x = 60
     right_bridge_x = width - 100
     bridge_y = river_y - 5
-
-    pygame.draw.rect(screen, (120, 80, 40), (left_bridge_x, bridge_y, bridge_w, bridge_h))
-    pygame.draw.rect(screen, (120, 80, 40), (right_bridge_x, bridge_y, bridge_w, bridge_h))
+    bridge_color = (120, 80, 40)
+    bridge_outline = (80, 50, 20)
+    
+    # Left bridge outline
+    pygame.draw.rect(screen, bridge_outline, (left_bridge_x - 1, bridge_y - 1, bridge_w + 2, bridge_h + 2))
+    pygame.draw.rect(screen, bridge_color, (left_bridge_x, bridge_y, bridge_w, bridge_h))
+    
+    # Right bridge outline
+    pygame.draw.rect(screen, bridge_outline, (right_bridge_x - 1, bridge_y - 1, bridge_w + 2, bridge_h + 2))
+    pygame.draw.rect(screen, bridge_color, (right_bridge_x, bridge_y, bridge_w, bridge_h))
 
 
 def draw_entities(
@@ -90,20 +110,26 @@ def draw_card_bar(
     for i, card_id in enumerate(card_order):
         x_pos = i * card_w
         bg_color = (100, 80, 60) if i == selected_index else (70, 50, 30)
+        
+        # Card background
         pygame.draw.rect(screen, bg_color, (x_pos, play_height, card_w, ui_height))
+        
+        # Card border (darker outline)
+        border_color = (30, 10, 0)
         pygame.draw.rect(
             screen,
-            (30, 10, 0),
+            border_color,
             (x_pos, play_height, card_w, ui_height),
-            3,
+            2,
         )
 
         if i == selected_index:
+            # Selected card: bright, crisp outline
             pygame.draw.rect(
                 screen,
                 GOLD,
-                (x_pos + 3, play_height + 3, card_w - 6, ui_height - 6),
-                3,
+                (x_pos + 2, play_height + 2, card_w - 4, ui_height - 4),
+                2,
             )
 
         # Determine which unit index this card corresponds to, to fetch its sprite.
@@ -111,8 +137,8 @@ def draw_card_bar(
         cost = int(card_def.get("cost", 0))
         stats_idx = int(card_def.get("stats_idx", i))
 
-        # Cost number
-        cost_txt = font_large.render(str(cost), True, PURPLE)
+        # Cost number (coin-themed: gold color)
+        cost_txt = font_large.render(str(cost), True, GOLD)
         screen.blit(cost_txt, (x_pos + 10, play_height + 10))
 
         # Sprite icon (Mario/DK/Peach/Yoshi, tinted as player)
@@ -142,24 +168,39 @@ def draw_coins_bar(
     font_large: pygame.font.Font,
 ) -> None:
     """
-    Draw the Coins bar in the same style as the original resource bar from smash2.py:
-    - Black background pill
+    Draw the Coins bar with enhanced visuals:
+    - Black background with darker border
     - Gold fill proportional to coins
+    - Subtle inner shadow for depth
     - White numeric label (coins count) and "Coins" label
     """
-    pygame.draw.rect(screen, BLACK, (5, play_height - 40, 160, 35))
+    bar_x, bar_y = 5, play_height - 40
+    bar_w, bar_h = 160, 35
+    inner_x, inner_y = 10, play_height - 35
+    inner_w, inner_h = 140, 25
+    
+    # Outer border (darker)
+    pygame.draw.rect(screen, (10, 10, 10), (bar_x, bar_y, bar_w, bar_h))
+    # Background
+    pygame.draw.rect(screen, BLACK, (bar_x + 1, bar_y + 1, bar_w - 2, bar_h - 2))
+    
+    # Inner shadow (subtle)
+    shadow_rect = pygame.Rect(inner_x + 1, inner_y + 1, inner_w, inner_h)
+    shadow_surf = pygame.Surface((inner_w, inner_h), pygame.SRCALPHA)
+    shadow_surf.fill((0, 0, 0, 50))
+    screen.blit(shadow_surf, shadow_rect)
 
     ratio = max(0.0, min(1.0, current_coins / max_coins))
-    coins_bar_w = int(140 * ratio)
-    pygame.draw.rect(screen, GOLD, (10, play_height - 35, coins_bar_w, 25))
+    coins_bar_w = int(inner_w * ratio)
+    pygame.draw.rect(screen, GOLD, (inner_x, inner_y, coins_bar_w, inner_h))
 
     # Numeric coins count
     coins_display = font_large.render(f"{int(current_coins)}", True, WHITE)
-    screen.blit(coins_display, (165, play_height - 35))
+    screen.blit(coins_display, (bar_x + bar_w + 5, inner_y))
 
     # Static "Coins" label
     label = font_large.render("Coins", True, WHITE)
-    screen.blit(label, (10, play_height - 55))
+    screen.blit(label, (bar_x + 2, bar_y - 20))
 
 
 def draw_game_over_banner(

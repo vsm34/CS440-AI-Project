@@ -26,33 +26,33 @@ TINT_ENEMY = (255, 100, 100)
 # ---------------------------------------------------------------------------
 
 PIXEL_GRIDS: Dict[int, List[List[int]]] = {
-    0: [  # Mario
+    0: [  # Mario - red hat, blue overalls, beige face with eyes
         [0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0],
         [0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
-        [0, 0, 1, 2, 2, 2, 1, 2, 0, 0, 0, 0],
-        [0, 0, 1, 2, 2, 2, 1, 2, 2, 2, 0, 0],
-        [0, 0, 1, 1, 2, 2, 2, 2, 1, 1, 1, 0],
-        [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-        [0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
-        [0, 0, 0, 2, 2, 1, 1, 2, 2, 0, 0, 0],
-        [0, 0, 2, 2, 2, 1, 1, 2, 2, 2, 0, 0],
-        [0, 0, 2, 2, 2, 1, 1, 2, 2, 2, 0, 0],
-        [0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
-        [0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
+        [0, 0, 1, 3, 4, 4, 3, 1, 0, 0, 0, 0],  # Face with white eyes
+        [0, 0, 1, 3, 5, 5, 3, 1, 2, 2, 0, 0],  # Face with pupils, blue overalls start
+        [0, 0, 1, 1, 3, 3, 1, 2, 2, 1, 1, 0],  # Red torso, skin chin, blue overalls
+        [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],  # Red torso
+        [0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],  # Red torso
+        [0, 0, 0, 2, 2, 1, 1, 2, 2, 0, 0, 0],  # Blue overalls, red arms
+        [0, 0, 2, 2, 2, 1, 1, 2, 2, 2, 0, 0],  # Blue overalls, red arms
+        [0, 0, 2, 2, 2, 1, 1, 2, 2, 2, 0, 0],  # Blue overalls, red arms
+        [0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0],  # Red boots
+        [0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0],  # Red boots
     ],
-    1: [  # DK
-        [0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
-        [0, 1, 1, 2, 2, 2, 2, 2, 1, 0, 0, 0],
-        [0, 1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0],
-        [1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0],
-        [1, 1, 2, 2, 2, 3, 3, 2, 2, 1, 1, 0],
-        [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0],
-        [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0],
-        [1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0],
-        [0, 1, 1, 1, 2, 2, 2, 2, 1, 1, 0, 0],
-        [0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
-        [0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0],
-        [0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0],
+    1: [  # Bowser - yellow/orange ring with smaller green center
+        [0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],  # Yellow/orange top
+        [0, 1, 1, 1, 3, 1, 3, 1, 1, 0, 0, 0],  # Yellow with white spikes
+        [0, 1, 1, 2, 2, 2, 2, 2, 1, 1, 0, 0],  # Yellow ring, small green center
+        [1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0],  # Yellow ring, green center
+        [1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0],  # Yellow ring, green center
+        [1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0],  # Yellow ring, green center
+        [1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 0],  # Yellow ring, green center
+        [1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 0],  # Yellow ring, smaller green
+        [0, 1, 1, 1, 2, 2, 2, 1, 1, 1, 0, 0],  # Yellow ring, even smaller green
+        [0, 0, 0, 1, 1, 3, 1, 1, 0, 0, 0, 0],  # Yellow bottom with spike
+        [0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0],  # Yellow
+        [0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0],  # Yellow
     ],
     2: [  # Peach
         [0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 0],
@@ -85,10 +85,32 @@ PIXEL_GRIDS: Dict[int, List[List[int]]] = {
 }
 
 UNIT_PALETTES: Dict[int, Dict[int, Tuple[int, int, int]]] = {
-    0: {1: (200, 0, 0), 2: (255, 200, 150), 3: (0, 0, 0)},  # Mario
-    1: {1: (100, 50, 0), 2: (150, 100, 50), 3: (255, 200, 150)},  # DK
-    2: {1: (255, 100, 180), 2: (255, 200, 150), 3: GOLD},  # Peach
-    3: {1: (50, 200, 50), 2: (255, 255, 255), 3: (200, 0, 0)},  # Yoshi
+    0: {  # Mario
+        # 1 = red clothing/hat, 2 = blue overalls, 3 = skin, 4 = eye white, 5 = eye pupil
+        1: (200, 0, 0),
+        2: (40, 80, 200),
+        3: (255, 220, 180),
+        4: (255, 255, 255),
+        5: (20, 20, 20),
+    },
+    1: {  # Bowser
+        # 1 = yellow/orange body/ring, 2 = green center, 3 = light spike/highlight
+        1: (230, 170, 40),
+        2: (60, 150, 70),
+        3: (255, 240, 210),
+    },
+    2: {  # Peach
+        # 1 = pink dress, 2 = skin, 3 = crown/hair (yellow)
+        1: (255, 120, 190),
+        2: (255, 220, 190),
+        3: (255, 215, 0),
+    },
+    3: {  # Yoshi
+        # 1 = green body, 2 = white belly, 3 = red accents
+        1: (50, 200, 50),
+        2: (255, 255, 255),
+        3: (200, 0, 0),
+    },
 }
 
 def _build_unit_stats_from_data() -> Dict[int, Dict[str, float | int | str | bool]]:
@@ -130,6 +152,10 @@ def generate_sprites() -> None:
     Generate the per-unit, per-team sprite surfaces.
 
     Must be called once after pygame.init() and before any Troop is drawn.
+    
+    Sprites are kept fully opaque and vibrant with distinct character colors.
+    Team identification is handled via colored base circles in Troop.draw(), 
+    NOT via tinting the sprites themselves.
     """
     base_sprites: Dict[int, pygame.Surface] = {}
     for idx, grid in PIXEL_GRIDS.items():
@@ -139,24 +165,22 @@ def generate_sprites() -> None:
             for c in range(12):
                 val = grid[r][c]
                 if val > 0:
-                    surf.set_at((c, r), palette[val])
+                    color = palette[val]
+                    # Ensure fully opaque pixels
+                    surf.set_at((c, r), (*color, 255))
         base_sprites[idx] = surf
 
     for team in ["player", "ai"]:
         SPRITE_ASSETS[team] = {}
-        tint = TINT_PLAYER if team == "player" else TINT_ENEMY
 
         for idx, base_surf in base_sprites.items():
             scale = float(UNIT_STATS[idx]["scale"])
             new_size = (int(12 * scale), int(12 * scale))
             scaled_surf = pygame.transform.scale(base_surf, new_size)
 
-            tinted_surf = scaled_surf.copy()
-            tint_overlay = pygame.Surface(new_size, pygame.SRCALPHA)
-            tint_overlay.fill(tint)
-            tinted_surf.blit(tint_overlay, (0, 0), special_flags=pygame.BLEND_MULT)
-
-            SPRITE_ASSETS[team][idx] = tinted_surf
+            # NO heavy tint; keep pixels as-is for vibrant character colors
+            # Team identity comes from base circles, not sprite tinting
+            SPRITE_ASSETS[team][idx] = scaled_surf
 
 
 @dataclass
@@ -185,6 +209,10 @@ class Troop:
 
     state: str = "move"
     facing_right: bool = True
+
+    # Target locking
+    current_target: Optional[object] = None
+    _target_lock_margin: float = 20.0  # Extra range margin before breaking lock
 
     # rendering
     _base_image: Optional[pygame.Surface] = None
@@ -223,6 +251,10 @@ class Troop:
     def update(self, enemy_units: List["Troop"], enemy_towers: List["Tower"]) -> None:
         """
         Update movement & combat vs. enemy units and towers.
+        
+        Implements target locking: once a troop locks onto a target (especially a tower),
+        it will continue attacking that target until it dies or goes out of range.
+        Units with target_pref="building" ignore regular troops entirely.
         """
         from game.entities.tower import Tower  # local import to avoid cycles
 
@@ -230,26 +262,139 @@ class Troop:
 
         if self.hp <= 0:
             self.state = "dead"
+            self.current_target = None
             return
 
-        # Choose potential targets
+        my_cx, my_cy = self.get_center()
+
+        # Check if current target is still valid
+        if self.current_target is not None:
+            # Check if target is dead or invalid
+            is_dead = getattr(self.current_target, "dead", False) or getattr(self.current_target, "hp", 0) <= 0
+            
+            if not is_dead:
+                # Check if target is still in range (with margin)
+                tx, ty = (
+                    self.current_target.get_center() 
+                    if hasattr(self.current_target, "get_center") 
+                    else (self.current_target.x, self.current_target.y)
+                )
+                target_radius = getattr(self.current_target, "radius", 0)
+                dist = math.hypot(tx - my_cx, ty - my_cy) - target_radius
+                
+                # If still in range (with margin), keep attacking this target
+                if dist <= self.range + self._target_lock_margin:
+                    target = self.current_target
+                    # In range: attack
+                    if dist <= self.range:
+                        self.state = "attack"
+                        target.hp -= self.damage
+                        if target.hp <= 0:
+                            target.dead = True
+                            self.current_target = None
+                        
+                        # Bowser splash damage: when attacking a tower, deal splash to nearby enemy troops
+                        if isinstance(target, Tower) and self.target_pref == "building" and self.stats_idx == 1:
+                            tx, ty = target.get_center()
+                            splash_radius = 45
+                            splash_damage = self.damage * 0.4
+                            for e in enemy_units:
+                                if e.hp > 0 and not getattr(e, "dead", False):
+                                    ex, ey = e.get_center()
+                                    if math.hypot(ex - tx, ey - ty) < splash_radius:
+                                        e.hp -= splash_damage
+                                        if e.hp <= 0:
+                                            e.dead = True
+                    else:
+                        # Out of immediate range but within lock margin: move toward it
+                        self.state = "move"
+                        dx = tx - my_cx
+                        dy = ty - my_cy
+                        move_dist = math.hypot(dx, dy)
+                        if move_dist > 0:
+                            self.x += (dx / move_dist) * self.speed
+                            self.y += (dy / move_dist) * self.speed
+                            self._rect.center = (int(self.x), int(self.y))
+                    
+                    # Update facing
+                    if tx < my_cx:
+                        self.facing_right = False
+                    else:
+                        self.facing_right = True
+                    
+                    if self.range > 40 and dist <= self.range:
+                        self._last_attack_line = (self.get_center(), (int(tx), int(ty)))
+                    
+                    return
+                else:
+                    # Target out of range: break lock
+                    self.current_target = None
+            else:
+                # Target is dead: clear lock
+                self.current_target = None
+
+        # No valid current target: find a new one
+        # Choose potential targets based on target_pref
         possible_targets: List[object] = []
+        
+        # Always include towers
         possible_targets.extend(enemy_towers)
 
+        # Only include troops if target_pref is "all"
         if self.target_pref == "all":
             for e in enemy_units:
                 if e.is_flying and not self.can_hit_air:
                     continue
                 possible_targets.append(e)
+        # Special case for Yoshi (id=3): if no building in range, allow targeting blocking troops
+        elif self.target_pref == "building" and self.stats_idx == 3:
+            # First, check if any tower is in range or close
+            nearest_tower = None
+            nearest_tower_dist = float("inf")
+            for tower in enemy_towers:
+                tx, ty = tower.get_center()
+                tower_radius = getattr(tower, "radius", 0)
+                d = math.hypot(tx - my_cx, ty - my_cy) - tower_radius
+                if d < nearest_tower_dist:
+                    nearest_tower_dist = d
+                    nearest_tower = tower
+            
+            # If no tower is close enough (within reasonable distance), allow targeting blocking troops
+            if nearest_tower is None or nearest_tower_dist > 100:
+                for e in enemy_units:
+                    if e.is_flying and not self.can_hit_air:
+                        continue
+                    ex, ey = e.get_center()
+                    # Check if this troop is between Yoshi and the nearest tower (if any)
+                    if nearest_tower is not None:
+                        tx, ty = nearest_tower.get_center()
+                        # Vector from Yoshi to tower
+                        dx_tower = tx - my_cx
+                        dy_tower = ty - my_cy
+                        # Vector from Yoshi to enemy troop
+                        dx_enemy = ex - my_cx
+                        dy_enemy = ey - my_cy
+                        # Check if enemy is roughly in the path (dot product check)
+                        dist_to_enemy = math.hypot(dx_enemy, dy_enemy)
+                        if dist_to_enemy < 50:  # Close blocking troop
+                            # Simple check: if enemy is closer than tower and roughly in same direction
+                            if dist_to_enemy < nearest_tower_dist:
+                                possible_targets.append(e)
+                    else:
+                        # No tower found, allow targeting any nearby troop
+                        dist_to_enemy = math.hypot(ex - my_cx, ey - my_cy)
+                        if dist_to_enemy < 60:
+                            possible_targets.append(e)
+        # If target_pref is "building" (and not Yoshi), we only have towers (already added above)
 
         if not possible_targets:
             self.state = "idle"
+            self.current_target = None
             return
 
         # Find closest target
         target: Optional[object] = None
         min_dist = float("inf")
-        my_cx, my_cy = self.get_center()
 
         for t in possible_targets:
             tx, ty = (t.get_center() if hasattr(t, "get_center") else (t.x, t.y))
@@ -259,12 +404,34 @@ class Troop:
                 min_dist = d
                 target = t
 
-        if target is not None and min_dist <= self.range:
+        if target is None:
+            self.state = "idle"
+            self.current_target = None
+            return
+
+        # Lock onto the new target
+        self.current_target = target
+
+        if min_dist <= self.range:
             # In range: attack
             self.state = "attack"
             target.hp -= self.damage
             if target.hp <= 0:
                 target.dead = True
+                self.current_target = None
+            
+            # Bowser splash damage: when attacking a tower, deal splash to nearby enemy troops
+            if isinstance(target, Tower) and self.target_pref == "building" and self.stats_idx == 1:
+                tx, ty = target.get_center()
+                splash_radius = 45
+                splash_damage = self.damage * 0.4
+                for e in enemy_units:
+                    if e.hp > 0 and not getattr(e, "dead", False):
+                        ex, ey = e.get_center()
+                        if math.hypot(ex - tx, ey - ty) < splash_radius:
+                            e.hp -= splash_damage
+                            if e.hp <= 0:
+                                e.dead = True
 
             tx, ty = (
                 target.get_center() if hasattr(target, "get_center") else (target.x, target.y)
@@ -276,7 +443,7 @@ class Troop:
 
             if self.range > 40:
                 self._last_attack_line = (self.get_center(), (int(tx), int(ty)))
-        elif target is not None:
+        else:
             # Move toward target
             self.state = "move"
             tx, ty = (
@@ -306,17 +473,29 @@ class Troop:
         ratio = max(0.0, self.hp / self.max_hp)
         w, h = 40, 6
         cx, top_y = self._rect.centerx, self._rect.top
+        bar_y = top_y - h - 10
 
-        bg_rect = pygame.Rect(cx - w // 2 - 1, top_y - h - 10 - 1, w + 2, h + 2)
-        hp_back_rect = pygame.Rect(cx - w // 2, top_y - h - 10, w, h)
-        hp_rect = pygame.Rect(cx - w // 2, top_y - h - 10, int(w * ratio), h)
+        # Consistent health bar styling: 1px black border, red background, green fill
+        bg_rect = pygame.Rect(cx - w // 2 - 1, bar_y - 1, w + 2, h + 2)
+        hp_back_rect = pygame.Rect(cx - w // 2, bar_y, w, h)
+        hp_rect = pygame.Rect(cx - w // 2, bar_y, int(w * ratio), h)
 
         pygame.draw.rect(screen, BLACK, bg_rect)
         pygame.draw.rect(screen, RED_HP, hp_back_rect)
         pygame.draw.rect(screen, GREEN_HP, hp_rect)
 
     def draw(self, screen: pygame.Surface) -> None:
-        # Shadow for flying units
+        # Team base / plate for team identity
+        base_color = TEAM_PLAYER if self.team == "player" else TEAM_ENEMY
+        base_y = self._rect.bottom - 3 if not self.is_flying else self._rect.bottom - 6
+        pygame.draw.circle(
+            screen,
+            base_color,
+            (self._rect.centerx, base_y),
+            max(6, self._rect.width // 2),
+        )
+        
+        # Shadow for flying units (drawn after base plate)
         if self.is_flying:
             shadow_surf = pygame.Surface((self._rect.width, 12), pygame.SRCALPHA)
             pygame.draw.ellipse(shadow_surf, SHADOW, (0, 0, self._rect.width, 12))
@@ -330,6 +509,12 @@ class Troop:
 
         screen.blit(self._image, self._rect)
         self._draw_health(screen)
+
+        # Attack line (for ranged units)
+        if self._last_attack_line is not None:
+            pygame.draw.line(
+                screen, WHITE, self._last_attack_line[0], self._last_attack_line[1], 1
+            )
 
         # Attack line (for ranged units)
         if self._last_attack_line is not None:

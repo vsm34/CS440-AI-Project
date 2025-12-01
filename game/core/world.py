@@ -12,6 +12,7 @@ from game.data.loader import load_cards, load_troops
 
 COINS_MAX = 10
 COINS_REGEN_MS = 700  # match smash2.py pacing
+HUD_HEIGHT = 100  # Height of bottom UI/card bar (matches main.py UI_HEIGHT)
 
 
 @dataclass
@@ -88,14 +89,47 @@ class World:
         return lanes
 
     def _create_king_towers(self) -> None:
+        """
+        Create king towers with symmetric placement.
+        
+        Battlefield area excludes the HUD at the bottom:
+        - battlefield_top = 0 (or small margin)
+        - battlefield_bottom = screen_height - HUD_HEIGHT
+        
+        Towers are placed symmetrically with equal distance from river/bridges.
+        """
         center_lane = self.get_lane(1)
-        size = int(center_lane.width * 0.45)
-        bottom_margin = 80
-        top_margin = 80
-
         cx = center_lane.x + center_lane.width // 2
-        player_y = self.screen_height - bottom_margin
-        ai_y = top_margin
+        
+        # Compute battlefield bounds (excludes HUD)
+        battlefield_bottom = self.screen_height - HUD_HEIGHT
+        battlefield_top = 0
+        
+        # Tower size (king tower has _size = 70, radius = 35)
+        tower_radius = 35
+        vertical_margin = 15  # Small margin so grass is visible around towers
+        
+        # Place player (bottom) tower: fully inside battlefield with margin
+        player_y = battlefield_bottom - tower_radius - vertical_margin
+        
+        # Place AI (top) tower: symmetric distance from top as player from bottom
+        ai_y = battlefield_top + tower_radius + vertical_margin
+        
+        # Ensure symmetry: same distance from river (which is at play_height // 2)
+        # River is at approximately (battlefield_bottom + battlefield_top) // 2
+        river_y = battlefield_bottom // 2
+        player_dist_from_river = abs(player_y - river_y)
+        ai_dist_from_river = abs(ai_y - river_y)
+        
+        # If not symmetric, adjust to match
+        if player_dist_from_river > ai_dist_from_river:
+            ai_y = river_y - player_dist_from_river
+        elif ai_dist_from_river > player_dist_from_river:
+            player_y = river_y + ai_dist_from_river
+        
+        # Final safety check: ensure towers are fully visible
+        player_y = min(player_y, battlefield_bottom - tower_radius - vertical_margin)
+        ai_y = max(ai_y, battlefield_top + tower_radius + vertical_margin)
 
         self.player_king_tower = Tower(cx, player_y, team="player", is_king=True)
         self.ai_king_tower = Tower(cx, ai_y, team="ai", is_king=True)

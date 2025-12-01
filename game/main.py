@@ -19,7 +19,7 @@ def main() -> None:
     # Match smash2.py exactly for window setup.
     SCREEN_WIDTH, SCREEN_HEIGHT = 450, 750
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    pygame.display.set_caption("Mario Royale - Pixel Art Fixed")
+    pygame.display.set_caption("Smash Royale")
     clock = pygame.time.Clock()
 
     world = World(SCREEN_WIDTH, SCREEN_HEIGHT)

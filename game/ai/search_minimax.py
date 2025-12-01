@@ -25,7 +25,7 @@ def get_legal_actions(state: GameState) -> List[Optional[PlayCardAction]]:
         lane_indices = [lane.index for lane in state.lanes]
 
     for card_id, cost in CARD_COSTS.items():
-        if state.player_elixir >= cost:
+        if state.player_coins >= cost:
             for lane_idx in lane_indices:
                 actions.append(PlayCardAction(card_id=card_id, lane_index=lane_idx))
 

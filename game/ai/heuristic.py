@@ -65,9 +65,9 @@ def evaluate_state(state: GameState) -> float:
     troop_hp_diff = total_player_troops - total_ai_troops
     score += troop_hp_diff * 0.5
 
-    # 4. Elixir advantage
-    elixir_diff = state.player_elixir - state.ai_elixir
-    score += elixir_diff * 2.0
+    # 4. Coin advantage
+    coins_diff = state.player_coins - state.ai_coins
+    score += coins_diff * 2.0
 
     # 5. Small bias for progressing time
     score += state.tick * 0.01

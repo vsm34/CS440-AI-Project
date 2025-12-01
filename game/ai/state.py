@@ -46,10 +46,10 @@ class GameState:
     player_base_hp: float = 1000.0
     ai_base_hp: float = 1000.0
 
-    # Resources
-    player_elixir: float = 5.0
-    ai_elixir: float = 5.0
-    max_elixir: float = 10.0
+    # Resources (Mario coins)
+    player_coins: float = 5.0
+    ai_coins: float = 5.0
+    max_coins: float = 10.0
 
     # Board
     lanes: List[LaneView] = field(default_factory=list)

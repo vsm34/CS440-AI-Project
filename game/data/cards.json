@@ -1,8 +1,26 @@
 [
   {
-    "id": "drybones",
-    "name": "Drybones",
-    "cost": 1,
-    "troop_type": "drybones"
+    "id": "mario",
+    "name": "Mario",
+    "coins_cost": 3,
+    "troop_id": 0
+  },
+  {
+    "id": "bowser",
+    "name": "Bowser",
+    "coins_cost": 5,
+    "troop_id": 1
+  },
+  {
+    "id": "dry_bones",
+    "name": "Peach",
+    "coins_cost": 3,
+    "troop_id": 2
+  },
+  {
+    "id": "red_shell",
+    "name": "Yoshi",
+    "coins_cost": 4,
+    "troop_id": 3
   }
 ]

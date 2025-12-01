@@ -1,10 +1,62 @@
 [
   {
-    "id": "drybones",
-    "name": "Drybones",
-    "hp": 100,
-    "speed": 120,
-    "damage": 20,
-    "range": 10
+    "id": 0,
+    "key": "mario",
+    "name": "Mario",
+    "role": "brawler_dps",
+    "coins_cost": 3,
+    "hp": 550,
+    "damage": 7,
+    "speed": 1.5,
+    "range": 32,
+    "target": "all",
+    "is_flying": false,
+    "can_hit_air": false,
+    "scale": 2.5
+  },
+  {
+    "id": 1,
+    "key": "bowser",
+    "name": "Bowser",
+    "role": "tank_siege",
+    "coins_cost": 6,
+    "hp": 1800,
+    "damage": 8,
+    "speed": 0.7,
+    "range": 36,
+    "target": "building",
+    "is_flying": false,
+    "can_hit_air": false,
+    "scale": 3.5
+  },
+  {
+    "id": 2,
+    "key": "peach",
+    "name": "Peach",
+    "role": "ranged_support",
+    "coins_cost": 2,
+    "hp": 110,
+    "damage": 3,
+    "speed": 1.6,
+    "range": 115,
+    "target": "all",
+    "is_flying": false,
+    "can_hit_air": true,
+    "scale": 2.0
+  },
+  {
+    "id": 3,
+    "key": "yoshi",
+    "name": "Yoshi",
+    "role": "fast_air_siege",
+    "coins_cost": 4,
+    "hp": 520,
+    "damage": 9,
+    "speed": 1.5,
+    "range": 30,
+    "target": "building",
+    "is_flying": true,
+    "can_hit_air": false,
+    "scale": 2.8
   }
 ]

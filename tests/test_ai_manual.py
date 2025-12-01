@@ -15,9 +15,9 @@ def main():
     state = GameState(
         player_base_hp=800,
         ai_base_hp=800,
-        player_elixir=5,
-        ai_elixir=3,
-        max_elixir=10,
+        player_coins=5,
+        ai_coins=3,
+        max_coins=10,
         lanes=[lane],
         tick=10,
     )

@@ -7,11 +7,11 @@ from typing import Optional
 from .state import GameState
 from game.core.actions import PlayCardAction
 
-# Placeholder costs; later you can sync with Gian's card data.
+# Placeholder costs; kept in sync with `game/data/cards.json`.
 CARD_COSTS = {
     "bowser": 5,
     "mario": 3,
-    "dry_bones": 2,
+    "dry_bones": 3,
     "red_shell": 4,
 }
 
@@ -25,14 +25,14 @@ def choose_baseline_action(state: GameState) -> Optional[PlayCardAction]:
     - If we can't do anything, return None (do nothing).
     """
 
-    if state.player_elixir < 2:
+    if state.player_coins < 2:
         return None
 
     # If we don't know about lanes yet (placeholder state), assume lane 0.
     if not state.lanes:
         for cid in ["mario", "dry_bones", "red_shell", "bowser"]:
             cost = CARD_COSTS.get(cid, 99)
-            if state.player_elixir >= cost:
+            if state.player_coins >= cost:
                 return PlayCardAction(card_id=cid, lane_index=0)
         return None
 
@@ -49,7 +49,7 @@ def choose_baseline_action(state: GameState) -> Optional[PlayCardAction]:
         target_lane = min(range(len(lane_scores)), key=lambda i: lane_scores[i])
 
     def can_play(card_id: str) -> bool:
-        return state.player_elixir >= CARD_COSTS.get(card_id, 99)
+        return state.player_coins >= CARD_COSTS.get(card_id, 99)
 
     # Defend low base with Bowser
     if state.player_base_hp < 400 and can_play("bowser"):
